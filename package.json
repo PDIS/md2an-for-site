@@ -1,0 +1,23 @@
+{
+  "name": "md2an-for-site",
+  "version": "1.0.0",
+  "description": "Converts Markdown to Akoma Ntoso for Sayit site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "md2an": "./index.js"
+  },
+  "author": "PDIS",
+  "license": "MIT",
+  "dependencies": {
+    "he": "^1.2.0",
+    "jsontoxml": "^1.0.1",
+    "lodash": "^4.17.15",
+    "marked": "^0.7.0",
+    "node-fetch": "^2.6.1",
+    "viz.js": "^2.1.2",
+    "xml-formatter": "^1.1.0"
+  }
+}
