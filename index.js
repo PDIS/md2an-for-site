@@ -212,17 +212,30 @@ const HandleTags = (p) => {
     .replace(/&/g, '&#x26;')
 }
 
-const mdsource = process.argv[2]
-
-if (mdsource.startsWith('https://')) {
-  fetch(process.argv[2])
-    .then((res) => res.text())
-    .then((md) => {
-      const graphviz = ConvertViz(md)
-      return md2an(md, graphviz)
-    })
-} else {
-  const md = fs.readFileSync(process.argv[2], 'utf-8')
-  const graphviz = ConvertViz(md)
-  return md2an(md, graphviz)
+const CheckEncodeURI = (url) => {
+  return /\%/i.test(url)
 }
+
+const GetOutput = async (md) => {
+  const graphviz = await ConvertViz(md)
+  const xml = md2an(md, graphviz)
+  console.log(xml)
+  return xml
+}
+
+const init = async () => {
+  let md = ''
+  const source = process.argv[2]
+
+  if (source.startsWith('https://')) {
+    const url = CheckEncodeURI(source) ? source : encodeURI(source)
+    const res = await fetch(url)
+    md = await res.text()
+  } else {
+    md = fs.readFileSync(source, 'utf-8')
+  }
+
+  return await GetOutput(md)
+}
+
+init()
