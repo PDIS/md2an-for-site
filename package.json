@@ -1,10 +1,14 @@
 {
   "name": "md2an-for-site",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Converts Markdown to Akoma Ntoso for Sayit site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PDIS/md2an-for-site.git"
   },
   "bin": {
     "md2an": "./index.js"
