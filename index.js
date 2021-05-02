@@ -39,6 +39,7 @@ const md2an = (input, graphviz) => {
   let references = []
   let debateSection = []
   let speakers = []
+  let count = 0
   let sections = input.replace(/\n:::info\n[\d\D]*?\n:::\n/, '').split('###')
   debateSection.push({ heading: (input.match(/^#* (.*)/) || [])[1] })
   if (graphviz != '') {
@@ -58,7 +59,8 @@ const md2an = (input, graphviz) => {
       return
     }
     // info section
-    if (/🌐|📅|🏡/.exec(section)) {
+    if (count == 0) {
+      count++
       let lines = section.split(/\n+/)
       lines.map((line) => {
         //iframe
