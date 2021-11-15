@@ -95,8 +95,8 @@ const md2an = (input, graphviz) => {
           debateSection.push(narrative)
           return
         }
-        //handle multiple hyperlinks
-        if (/(?=.*>)(?=.*\[)(?=.*（).*/.exec(line)) {
+        //narrative
+        if (/^>/.exec(line)) {
           let narrative = {
             name: 'narrative',
             children: [
